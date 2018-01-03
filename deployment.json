@@ -35,7 +35,7 @@
             "status": "running",
             "restartPolicy": "always",
             "settings": {
-              "image": "<registry>/<image>:<tag>",
+              "image": "dariuszparys/monitor-module:#{Monitor.BuildId}#-linux-x64",
               "createOptions": "{}"
             }
           }
