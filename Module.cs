@@ -6,6 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Azure.Devices.Client;
 using Microsoft.Azure.Devices.Client.Transport.Mqtt;
 
@@ -18,12 +19,15 @@ namespace MonitorModule
         {
         }
 
-        public void Initialize()
+        public void Initialize(string[] args)
         {
             // Cert verification is not yet fully functional when using Windows OS for the container
             bool bypassCertVerification = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
             if (!bypassCertVerification) InstallCert();
             Init(connectionString, bypassCertVerification).Wait();
+
+
+            Program.BuildWebHost(args).Run();
 
             // Wait until the app unloads or is cancelled
             var cts = new CancellationTokenSource();

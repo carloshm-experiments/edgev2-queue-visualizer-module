@@ -11,8 +11,8 @@ namespace MonitorModule
         static void Main(string[] args)
         {
             Module module = new Module();
-            module.Initialize();
-            BuildWebHost(args).Run();
+            module.Initialize(args);
+            // BuildWebHost(args).Run();
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
