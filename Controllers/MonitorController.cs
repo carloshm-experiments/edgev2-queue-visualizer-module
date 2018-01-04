@@ -6,6 +6,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Text;
 using System.Threading.Tasks;
+using MonitorModule;
 
 namespace restmodule.Controllers
 {
@@ -17,10 +18,13 @@ namespace restmodule.Controllers
         }
 
         [HttpGet("/queues")]
-        public JObject Test()
+        public JObject ReceiveMessages()
         {
-            var a = new { test = "123", name = "321" };
-            return JObject.FromObject(a);
+            // var a = new { test = "123", name = "321" };
+            // return JObject.FromObject(a);
+
+            return JObject.FromObject(Data.Instance.Messages);
+
         }
     }
 }

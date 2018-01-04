@@ -103,6 +103,13 @@ namespace MonitorModule
                 Console.WriteLine($"Creation Time: {message.CreationTimeUtc.ToLongTimeString()}");
                 Console.WriteLine($"Enqueued Time: {message.EnqueuedTimeUtc.ToLongTimeString()}");
 
+                MessageData messageData = new MessageData
+                {
+                    ModuleId = message.ConnectionModuleId,
+                    MessageReceived = messageString
+                };
+                Data.Instance.AddMessageData(messageData);
+
                 foreach( var p in message.Properties)
                 {
                    Console.WriteLine($"Property: {p.Key} = {p.Value}");
