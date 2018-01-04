@@ -36,7 +36,7 @@
             "restartPolicy": "always",
             "settings": {
               "image": "dariuszparys/monitor-module:#{Monitor.BuildId}#-linux-x64",
-              "createOptions": "{\"HostConfig\": {\"PortBindings\": {\"4243/tcp\": [{\"HostPort\": \"4243\"}]}}"
+              "createOptions": {}
             }
           },
           "tempSensor": {
