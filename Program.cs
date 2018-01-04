@@ -1,6 +1,7 @@
 namespace MonitorModule
 {
     using System;
+    using System.IO;
     using Microsoft.AspNetCore;
     using Microsoft.AspNetCore.Hosting;
 
@@ -17,6 +18,7 @@ namespace MonitorModule
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseStartup<Startup>()
                 .UseUrls("http://*:4243")
                 .Build();

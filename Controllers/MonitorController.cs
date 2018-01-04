@@ -20,9 +20,6 @@ namespace restmodule.Controllers
         [HttpGet("/queues")]
         public JArray ReceiveMessages()
         {
-            // var a = new { test = "123", name = "321" };
-            // return JObject.FromObject(a);
-
             return JArray.FromObject(Data.Instance.Messages);
 
         }
