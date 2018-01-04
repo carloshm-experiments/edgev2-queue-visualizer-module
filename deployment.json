@@ -36,7 +36,7 @@
             "restartPolicy": "always",
             "settings": {
               "image": "dariuszparys/monitor-module:latest",
-              "createOptions": "{}"
+              "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"4243/tcp\":[{\"HostPort\":\"4243\"}]}}}"
             }
           }
         }
