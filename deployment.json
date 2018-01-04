@@ -35,33 +35,22 @@
             "status": "running",
             "restartPolicy": "always",
             "settings": {
-              "image": "dariuszparys/monitor-module:#{Monitor.BuildId}#-linux-x64",
-              "createOptions": {}
-            }
-          },
-          "tempSensor": {
-            "version": "1.0",
-            "type": "docker",
-            "status": "running",
-            "restartPolicy": "always",
-            "settings": {
-              "image": "microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview",
-              "createOptions": {}
+              "image": "dariuszparys/monitor-module:latest",
+              "createOptions": "{}"
             }
           }
         }
       }
-    }
-  },
-  "$edgeHub": {
-    "properties.desired": {
-      "schemaVersion": "1.0",
-      "routes": {
-        "toMonitor": "FROM /* INTO BrokeredEndpoint(\"/modules/monitor-module/inputs/input1\")",
-        "toIotHub": "FROM /* INTO $upstream"
-      },
-      "storeAndForwardConfiguration": {
-        "timeToLiveSecs": 7200
+    },
+    "$edgeHub": {
+      "properties.desired": {
+        "schemaVersion": "1.0",
+        "routes": {
+          "route": "FROM /* INTO $upstream"
+        },
+        "storeAndForwardConfiguration": {
+          "timeToLiveSecs": 7200
+        }
       }
     }
   }
