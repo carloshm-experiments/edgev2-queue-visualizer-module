@@ -5,15 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        table {
+            border: 2px solid #42b983;
+            border-radius: 3px;
+            background-color: #fff;
+        }
+
+        th {
+            background-color: #42b983;
+            color: rgba(255,255,255,0.66);
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        th, td {
+            min-width: 120px;
+            padding: 10px 20px;
+        }
+
+
+    </style>
 </head>
 <body>
     <h1>Queue Monitoring</h1>
     <div id="app">
-        <ul>
-            <li v-for="message in messages">
-                {{ message.ModuleId }} - {{ message.MessageReceived }}
-            </li>
-        </ul>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Module
+                    </th>
+                    <th>
+                        JSON Payload
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="message in messages">
+                    <td>
+                        {{ message.ModuleId }}
+                    </td>
+                    <td>
+                        {{ message.MessageReceived }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <script src="js/vue.js"></script>
