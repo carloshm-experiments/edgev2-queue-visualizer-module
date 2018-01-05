@@ -11,6 +11,7 @@ namespace MonitorModule
 
         static void Main(string[] args)
         {
+            Console.WriteLine($"Current Directory = {Directory.GetCurrentDirectory()}");
             Module module = new Module();
             module.Initialize(args);
             // BuildWebHost(args).Run();
@@ -18,9 +19,10 @@ namespace MonitorModule
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseStartup<Startup>()
                 .UseUrls("http://*:4243")
+                .UseStartup<Startup>()
                 .Build();
 
     }
